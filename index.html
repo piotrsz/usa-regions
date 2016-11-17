@@ -109,6 +109,9 @@
                     <ul class="dropdown-menu" aria-labelledby="dStates">
                         <li><a href="#states">States</a></li>
                         <li><a href="#nicknames">Nicknames</a></li>
+                        <li><a href="#density">Population density</a></li>
+                        <li><a href="#blackdensity">Black pop. density</a></li>
+                        <li><a href="#half">Half of the population</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -488,103 +491,192 @@
         className: "freewayLegend"
     });
 
-    var legends = [cannabisLegend, sameSexLegend, gunOwnersLegend, theCityLegend, sodaLegend, freewaysLegend];
+    var blackColors = {
+        1: "#fc0404",
+        2: "#e42404",
+        3: "#e46404",
+        4: "#e48404",
+        5: "#e4a404",
+        6: "#e4e404",
+        7: "#fcfc04",
+        8: "#fcfcfc"
+    }, blackDescriptions = {
+        1: "53.2 &dash; 86.5",
+        2: "37.8 &dash; 53.1",
+        3: "27.1 &dash; 37.7",
+        4: "18.1 &dash; 27.0",
+        5: "10.2 &dash; 18.0",
+        6: "3.5 &dash; 10.1",
+        7: "0.1 &dash; 3.4",
+        8: "0"
+    }, blackLegend = createLegend({
+        title: "Black population density in 2000",
+        colors: blackColors,
+        descriptions: blackDescriptions,
+        className: "blackLegend"
+    }), black = L.tileLayer('http://warp.worldmap.harvard.edu/maps/tile/5957/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://upload.wikimedia.org/wikipedia/commons/6/6b/USA_2000_black_density.png">Wikipedia</a>',
+        opacity: 0.7
+    });
+
+    var half = L.tileLayer('http://warp.worldmap.harvard.edu/maps/tile/5958/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.businessinsider.com/half-of-the-united-states-lives-in-these-counties-2013-9?IR=T">Business Insider</a>',
+        opacity: 0.7
+    });
+
+    var densityColors = {
+        1: "#7d0000",
+        2: "#970000",
+        3: "#b10000",
+        4: "#cb0000",
+        5: "#e50000",
+        6: "#ff0000",
+        7: "#ff3333",
+        8: "#ff6666",
+        9: "#ffcccc",
+        10: "#ffffff",
+        11: "#eeeeee"
+    }, densityDescriptions = {
+        1: "530+",
+        2: "470",
+        3: "420",
+        4: "370",
+        5: "320",
+        6: "260",
+        7: "210",
+        8: "160",
+        9: "110",
+        10: "50",
+        11: "No data"
+    }, densityLegend = createLegend({
+        title: "Population density in 2010",
+        colors: densityColors,
+        descriptions: densityDescriptions,
+        className: "densityLegend"
+    }), density = L.tileLayer('http://warp.worldmap.harvard.edu/maps/tile/5959/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://ecpmlangues.u-strasbg.fr/civilization/geography/maps/US%20Population%20density,%202010.png">e-cpm</a>',
+        opacity: 0.7
+    });
+
+    var legends = [cannabisLegend, sameSexLegend, gunOwnersLegend, theCityLegend, sodaLegend, freewaysLegend, blackLegend, densityLegend];
 
     var base = {
-                layers: [
-                    osm
-                ]
-            },
-            compositions = {
-                "#states": {
-                    layers: [
-                        osm,
-                        polygons,
-                        abbr
-                    ]
-                },
-                "#nicknames": {
-                    layers: [
-                        osm,
-                        polygons,
-                        nicknames
-                    ]
-                },
-                "#regions": {
-                    layers: [
-                        osm,
-                        regions,
-                        regionLabels
-                    ]
-                },
-                "#11nations": {
-                    layers: [
-                        osm,
-                        nations,
-                        statesOutlines
-                    ]
-                },
-                "#garreau": {
-                    layers: [
-                        osm,
-                        garreau,
-                        statesOutlines
-                    ]
-                },
-                "#dialects": {
-                    layers: [
-                        osm,
-                        dialects,
-                        statesOutlines
-                    ]
-                },
-                "#cannabis": {
-                    layers: [
-                        osm,
-                        cannabis,
-                        cannabisLegend
-                    ]
-                },
-                "#samesex": {
-                    layers: [
-                        osm,
-                        sameSex,
-                        sameSexLegend
-                    ]
-                },
-                "#guns": {
-                    layers: [
-                        osm,
-                        gunOwners,
-                        statesOutlines,
-                        gunOwnersLegend
-                    ]
-                },
-                "#thecity": {
-                    layers: [
-                        osm,
-                        theCity,
-                        statesOutlines,
-                        theCityLegend
-                    ]
-                },
-                "#freeways": {
-                    layers: [
-                        osm,
-                        freeways,
-                        statesOutlines,
-                        freewaysLegend
-                    ]
-                },
-                "#soda": {
-                    layers: [
-                        osm,
-                        soda,
-                        statesOutlines,
-                        sodaLegend
-                    ]
-                }
-            };
+        layers: [
+            osm
+        ]
+    }, compositions = {
+        "#states": {
+            layers: [
+                osm,
+                polygons,
+                abbr
+            ]
+        },
+        "#nicknames": {
+            layers: [
+                osm,
+                polygons,
+                nicknames
+            ]
+        },
+        "#regions": {
+            layers: [
+                osm,
+                regions,
+                regionLabels
+            ]
+        },
+        "#11nations": {
+            layers: [
+                osm,
+                nations,
+                statesOutlines
+            ]
+        },
+        "#garreau": {
+            layers: [
+                osm,
+                garreau,
+                statesOutlines
+            ]
+        },
+        "#dialects": {
+            layers: [
+                osm,
+                dialects,
+                statesOutlines
+            ]
+        },
+        "#cannabis": {
+            layers: [
+                osm,
+                cannabis,
+                cannabisLegend
+            ]
+        },
+        "#samesex": {
+            layers: [
+                osm,
+                sameSex,
+                sameSexLegend
+            ]
+        },
+        "#guns": {
+            layers: [
+                osm,
+                gunOwners,
+                statesOutlines,
+                gunOwnersLegend
+            ]
+        },
+        "#thecity": {
+            layers: [
+                osm,
+                theCity,
+                statesOutlines,
+                theCityLegend
+            ]
+        },
+        "#freeways": {
+            layers: [
+                osm,
+                freeways,
+                statesOutlines,
+                freewaysLegend
+            ]
+        },
+        "#soda": {
+            layers: [
+                osm,
+                soda,
+                statesOutlines,
+                sodaLegend
+            ]
+        },
+        "#blackdensity": {
+            layers: [
+                osm,
+                black,
+                statesOutlines,
+                blackLegend
+            ]
+        },
+        "#half": {
+            layers: [
+                osm,
+                half,
+                statesOutlines
+            ]
+        },
+        "#density": {
+            layers: [
+                osm,
+                density,
+                statesOutlines,
+                densityLegend
+            ]
+        }
+    };
 
     function createLegend(options) {
         var title = options.title,
