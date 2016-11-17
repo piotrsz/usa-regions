@@ -2230,7 +2230,8 @@ var states = {
                 "AWATER": 19027462392,
                 "CAPITAL": "Austin",
                 "NICKNAME": "The Lone Star State",
-                "REGION": "The Southwest"
+                "REGION": "The Southwest",
+                "CANNABIS": "D"
             }
         },
         {
@@ -4148,7 +4149,8 @@ var states = {
                 "AWATER": 20477992907,
                 "CAPITAL": "Sacramento",
                 "NICKNAME": "The Golden State",
-                "REGION": "The West"
+                "REGION": "The West",
+                "CANNABIS": "A"
             }
         },
         {
@@ -5508,7 +5510,8 @@ var states = {
                 "AWATER": 2389483091,
                 "CAPITAL": "Frankfort",
                 "NICKNAME": "The Bluegrass State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "D"
             }
         },
         {
@@ -6616,7 +6619,8 @@ var states = {
                 "AWATER": 4740824950,
                 "CAPITAL": "Atlanta",
                 "NICKNAME": "The Peach State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "D"
             }
         },
         {
@@ -7978,7 +7982,8 @@ var states = {
                 "AWATER": 29365442607,
                 "CAPITAL": "Madison",
                 "NICKNAME": "The Badger State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "D"
             }
         },
         {
@@ -9010,7 +9015,8 @@ var states = {
                 "AWATER": 6190771822,
                 "CAPITAL": "Salem",
                 "NICKNAME": "The Beaver State",
-                "REGION": "The West"
+                "REGION": "The West",
+                "CANNABIS": "A"
             }
         },
         {
@@ -10340,7 +10346,8 @@ var states = {
                 "AWATER": 8503553482,
                 "CAPITAL": "Richmond",
                 "NICKNAME": "The Old Dominion State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "D"
             }
         },
         {
@@ -11364,7 +11371,8 @@ var states = {
                 "AWATER": 2352826875,
                 "CAPITAL": "Nashville",
                 "NICKNAME": "The Volunteer State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "D"
             }
         },
         {
@@ -12592,7 +12600,8 @@ var states = {
                 "AWATER": 23747902252,
                 "CAPITAL": "Baton Rouge",
                 "NICKNAME": "The Pelican State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "C"
             }
         },
         {
@@ -13958,7 +13967,8 @@ var states = {
                 "AWATER": 19242497698,
                 "CAPITAL": "Albany",
                 "NICKNAME": "The Empire State",
-                "REGION": "Mid-Atlantic"
+                "REGION": "Mid-Atlantic",
+                "CANNABIS": "B"
             }
         },
         {
@@ -15896,7 +15906,8 @@ var states = {
                 "AWATER": 104031185771,
                 "CAPITAL": "Lansing",
                 "NICKNAME": "The Great Lakes State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "C"
             }
         },
         {
@@ -16984,7 +16995,8 @@ var states = {
                 "AWATER": 2397619893,
                 "CAPITAL": "Boise",
                 "NICKNAME": "The Gem State",
-                "REGION": "The West"
+                "REGION": "The West",
+                "CANNABIS": "F"
             }
         },
         {
@@ -18546,7 +18558,8 @@ var states = {
                 "AWATER": 31406193924,
                 "CAPITAL": "Tallahassee",
                 "NICKNAME": "The Sunshine State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "B"
             }
         },
         {
@@ -27812,7 +27825,8 @@ var states = {
                 "AWATER": 245391672906,
                 "CAPITAL": "Juneau",
                 "NICKNAME": "The Last Frontier",
-                "REGION": "The West"
+                "REGION": "The West",
+                "CANNABIS": "A"
             }
         },
         {
@@ -28816,7 +28830,8 @@ var states = {
                 "AWATER": 3868193267,
                 "CAPITAL": "Helena",
                 "NICKNAME": "The Treasure State",
-                "REGION": "The West"
+                "REGION": "The West",
+                "CANNABIS": "C"
             }
         },
         {
@@ -30092,7 +30107,8 @@ var states = {
                 "AWATER": 18924724649,
                 "CAPITAL": "St. Paul",
                 "NICKNAME": "The North Star State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "B"
             }
         },
         {
@@ -30944,7 +30960,8 @@ var states = {
                 "AWATER": 1356294775,
                 "CAPITAL": "Lincoln",
                 "NICKNAME": "The Cornhusker State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "E"
             }
         },
         {
@@ -31918,7 +31935,8 @@ var states = {
                 "AWATER": 12540093192,
                 "CAPITAL": "Olympia",
                 "NICKNAME": "The Evergreen State",
-                "REGION": "The West"
+                "REGION": "The West",
+                "CANNABIS": "A"
             }
         },
         {
@@ -32892,7 +32910,8 @@ var states = {
                 "AWATER": 10266305761,
                 "CAPITAL": "Columbus",
                 "NICKNAME": "The Buckeye State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "B"
             }
         },
         {
@@ -34204,7 +34223,8 @@ var states = {
                 "AWATER": 6200606440,
                 "CAPITAL": "Springfield",
                 "NICKNAME": "Prairie State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "B"
             }
         },
         {
@@ -35496,7 +35516,8 @@ var states = {
                 "AWATER": 2487589369,
                 "CAPITAL": "Jefferson City",
                 "NICKNAME": "The Show Me State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "B"
             }
         },
         {
@@ -36536,7 +36557,8 @@ var states = {
                 "AWATER": 1077969087,
                 "CAPITAL": "Des Moines",
                 "NICKNAME": "The Hawkeye State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "D"
             }
         },
         {
@@ -37312,7 +37334,8 @@ var states = {
                 "AWATER": 3379810671,
                 "CAPITAL": "Pierre",
                 "NICKNAME": "Mount Rushmore State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "F"
             }
         },
         {
@@ -38212,7 +38235,8 @@ var states = {
                 "AWATER": 2962525273,
                 "CAPITAL": "Little Rock",
                 "NICKNAME": "The Natural State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "B"
             }
         },
         {
@@ -39144,7 +39168,8 @@ var states = {
                 "AWATER": 3928386321,
                 "CAPITAL": "Jackson",
                 "NICKNAME": "The Magnolia State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "B"
             }
         },
         {
@@ -39564,7 +39589,8 @@ var states = {
                 "AWATER": 1175462574,
                 "CAPITAL": "Denver",
                 "NICKNAME": "The Centennial State",
-                "REGION": "The West"
+                "REGION": "The West",
+                "CANNABIS": "A"
             }
         },
         {
@@ -40488,7 +40514,8 @@ var states = {
                 "AWATER": 13472548815,
                 "CAPITAL": "Raleigh",
                 "NICKNAME": "The Tar Heel State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "B"
             }
         },
         {
@@ -40896,7 +40923,8 @@ var states = {
                 "AWATER": 6999936465,
                 "CAPITAL": "Salt Lake City",
                 "NICKNAME": "The Beehive State",
-                "REGION": "The West"
+                "REGION": "The West",
+                "CANNABIS": "D"
             }
         },
         {
@@ -41864,7 +41892,8 @@ var states = {
                 "AWATER": 3374050771,
                 "CAPITAL": "Oklahoma City  ",
                 "NICKNAME": "The Sooner State",
-                "REGION": "The Southwest"
+                "REGION": "The Southwest",
+                "CANNABIS": "D"
             }
         },
         {
@@ -42276,7 +42305,8 @@ var states = {
                 "AWATER": 1861255811,
                 "CAPITAL": "Cheyenne",
                 "NICKNAME": "The Equality or Cowboy State",
-                "REGION": "The West"
+                "REGION": "The West",
+                "CANNABIS": "D"
             }
         },
         {
@@ -43268,7 +43298,8 @@ var states = {
                 "AWATER": 489469489,
                 "CAPITAL": "Charleston",
                 "NICKNAME": "The Mountain State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "F"
             }
         },
         {
@@ -44168,7 +44199,8 @@ var states = {
                 "AWATER": 1535887357,
                 "CAPITAL": "Indianapolis",
                 "NICKNAME": "The Hoosier State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "F"
             }
         },
         {
@@ -45078,7 +45110,8 @@ var states = {
                 "AWATER": 7130316321,
                 "CAPITAL": "Boston",
                 "NICKNAME": "The Bay State",
-                "REGION": "New England"
+                "REGION": "New England",
+                "CANNABIS": "A"
             }
         },
         {
@@ -45666,7 +45699,8 @@ var states = {
                 "AWATER": 2047841189,
                 "CAPITAL": "Carson City",
                 "NICKNAME": "The Silver State",
-                "REGION": "The West"
+                "REGION": "The West",
+                "CANNABIS": "A"
             }
         },
         {
@@ -46082,7 +46116,8 @@ var states = {
                 "AWATER": 1814924099,
                 "CAPITAL": "Hartford",
                 "NICKNAME": "The Constitution State",
-                "REGION": "New England"
+                "REGION": "New England",
+                "CANNABIS": "B"
             }
         },
         {
@@ -46146,7 +46181,8 @@ var states = {
                 "AWATER": 18633403,
                 "CAPITAL": "Washington",
                 "NICKNAME": "-",
-                "REGION": "Mid-Atlantic"
+                "REGION": "Mid-Atlantic",
+                "CANNABIS": "A"
             }
         },
         {
@@ -46412,7 +46448,8 @@ var states = {
                 "AWATER": 1323474145,
                 "CAPITAL": "Providence",
                 "NICKNAME": "The Ocean State",
-                "REGION": "New England"
+                "REGION": "New England",
+                "CANNABIS": "B"
             }
         },
         {
@@ -47164,7 +47201,8 @@ var states = {
                 "AWATER": 4593984687,
                 "CAPITAL": "Montgomery",
                 "NICKNAME": "Yellowhammer State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "D"
             }
         },
         {
@@ -47746,7 +47784,8 @@ var states = {
                 "AWATER": 4923406204,
                 "CAPITAL": "San Juan",
                 "NICKNAME": "-",
-                "REGION": ""
+                "REGION": "",
+                "CANNABIS": "C"
             }
         },
         {
@@ -48538,7 +48577,8 @@ var states = {
                 "AWATER": 5074366056,
                 "CAPITAL": "Columbia",
                 "NICKNAME": "The Palmetto State",
-                "REGION": "The South"
+                "REGION": "The South",
+                "CANNABIS": "D"
             }
         },
         {
@@ -49604,7 +49644,8 @@ var states = {
                 "AWATER": 11748561064,
                 "CAPITAL": "Augusta",
                 "NICKNAME": "The Pine Tree State",
-                "REGION": "New England"
+                "REGION": "New England",
+                "CANNABIS": "A"
             }
         },
         {
@@ -50598,7 +50639,8 @@ var states = {
                 "AWATER": 11777724416,
                 "CAPITAL": "Honolulu",
                 "NICKNAME": "The Aloha State",
-                "REGION": "The West"
+                "REGION": "The West",
+                "CANNABIS": "C"
             }
         },
         {
@@ -51242,7 +51284,8 @@ var states = {
                 "AWATER": 1027559124,
                 "CAPITAL": "Phoenix",
                 "NICKNAME": "The Grand Canyon State",
-                "REGION": "The Southwest"
+                "REGION": "The Southwest",
+                "CANNABIS": "C"
             }
         },
         {
@@ -51682,7 +51725,8 @@ var states = {
                 "AWATER": 755674004,
                 "CAPITAL": "Santa Fe",
                 "NICKNAME": "The Land of Enchantment",
-                "REGION": "The Southwest"
+                "REGION": "The Southwest",
+                "CANNABIS": "C"
             }
         },
         {
@@ -52780,7 +52824,8 @@ var states = {
                 "AWATER": 6983598596,
                 "CAPITAL": "Annapolis",
                 "NICKNAME": "The Old Line State",
-                "REGION": "Mid-Atlantic"
+                "REGION": "Mid-Atlantic",
+                "CANNABIS": "B"
             }
         },
         {
@@ -53020,7 +53065,8 @@ var states = {
                 "AWATER": 1398742998,
                 "CAPITAL": "Dover",
                 "NICKNAME": "The First State",
-                "REGION": "Mid-Atlantic"
+                "REGION": "Mid-Atlantic",
+                "CANNABIS": "B"
             }
         },
         {
@@ -53760,7 +53806,8 @@ var states = {
                 "AWATER": 3396643587,
                 "CAPITAL": "Harrisburg",
                 "NICKNAME": "The Keystone State",
-                "REGION": "Mid-Atlantic"
+                "REGION": "Mid-Atlantic",
+                "CANNABIS": "C"
             }
         },
         {
@@ -54468,7 +54515,8 @@ var states = {
                 "AWATER": 1346896791,
                 "CAPITAL": "Topeka",
                 "NICKNAME": "The Sunflower State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "F"
             }
         },
         {
@@ -55008,7 +55056,8 @@ var states = {
                 "AWATER": 1034382802,
                 "CAPITAL": "Montpelier",
                 "NICKNAME": "The Green Mountain State",
-                "REGION": "New England"
+                "REGION": "New England",
+                "CANNABIS": "B"
             }
         },
         {
@@ -55692,7 +55741,8 @@ var states = {
                 "AWATER": 3543447118,
                 "CAPITAL": "Trenton",
                 "NICKNAME": "The Garden State",
-                "REGION": "Mid-Atlantic"
+                "REGION": "Mid-Atlantic",
+                "CANNABIS": "C"
             }
         },
         {
@@ -56232,7 +56282,8 @@ var states = {
                 "AWATER": 4398999691,
                 "CAPITAL": "Bismarck",
                 "NICKNAME": "The Peace Garden State",
-                "REGION": "Midwest"
+                "REGION": "Midwest",
+                "CANNABIS": "B"
             }
         },
         {
@@ -56780,7 +56831,8 @@ var states = {
                 "AWATER": 1026190438,
                 "CAPITAL": "Concord",
                 "NICKNAME": "The Granite State",
-                "REGION": "New England"
+                "REGION": "New England",
+                "CANNABIS": "C"
             }
         }
     ]

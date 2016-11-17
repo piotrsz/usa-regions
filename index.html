@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <link type="text/css" rel="stylesheet" href="./lib/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="./lib/leaflet/leaflet.css"/>
     <script type="text/javascript" src="./lib/lodash/lodash.min.js"></script>
@@ -30,6 +31,53 @@
         .leaflet-top {
             top: 60px;
         }
+
+        .legend {
+            line-height: 18px;
+            color: #555;
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+        .modal-content{
+            background-color:#222;
+            color:#ddd;
+        }
+
+        .modal-dialog {
+            width: 400px;
+            overflow: auto;
+            background-color:#333;
+        }
+
+        /* custom animation */
+        .modal.fade {
+            left: -50%;
+            -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+            transition: opacity 0.3s linear, left 0.3s ease-out;
+        }
+
+        .modal.fade.in {
+            left: 100px;
+        }
     </style>
 </head>
 <body>
@@ -43,17 +91,38 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">'Murican culture</a>
+            <a class="navbar-brand" href="#">Regional Variety</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#states">States</a></li>
-                <li><a href="#nicknames">Nicknames</a></li>
                 <li><a href="#regions">Regions</a></li>
-                <li class="active"><a href="#garreau">9 Nations</a></li>
-                <li><a href="#11nations">11 Nations</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" id="dStates" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        States <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dStates">
+                        <li><a href="#states">States</a></li>
+                        <li><a href="#nicknames">Nicknames</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" id="dLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Nations <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                        <li class="active"><a href="#garreau">9 Nations</a></li>
+                        <li><a href="#11nations">11 Nations</a></li>
+                    </ul>
+                </li>
                 <li><a href="#dialects">Dialects</a></li>
+                <li><a href="#cannabis">Cannabis</a></li>
+                <li><a href="#samesex">Same Sex Unions</a></li>
+                <li><a href="#guns">Gun Owners</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="about"><a class="btn" data-toggle="modal" data-target="#myModal" href="#about">About</a></li>
+            </ul>
+
         </div><!--/.nav-collapse -->
     </div>
 </nav>
@@ -62,7 +131,46 @@
     <div id="map" class="map"></div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">About this application</h4>
+            </div>
+            <div class="modal-body">
+                <h5>Regional Variety maps of the USA</h5>
+                <h6>Sources:</h6>
+                <ul>
+                    <li>Wikipedia</li>
+                    <li>Washington Post</li>
+                    <li>Tufts Magazine</li>
+                    <li>Joel Garreau</li>
+                    <li>Mother Jones</li>
+                    <li>US Census Bureau</li>
+                    <li>Business Insider</li>
+                    <li>Joshua Katz</li>
+                </ul>
+                <h6>Technologies:</h6>
+                <ul>
+                    <li><a href="http://leafletjs.com/">Leaflet</a></li>
+                    <li><a href="http://turfjs.org/">Turfjs</a></li>
+                    <li><a href="https://lodash.com/">Lodash</a></li>
+                    <li><a href="https://jquery.com/">jQuery</a></li>
+                    <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+                    <li><a href="http://warp.worldmap.harvard.edu/">WorldMap WARP</a></li>
+                </ul>
+
+                <p>&copy; 2016 <i>Szrajber & Szuster</i></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div> <!-- #/myModal -->
 <script type="text/javascript">
+
     var b = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33'];
     var colors = {
         "The South": b[0],
@@ -71,6 +179,78 @@
         "Midwest": b[3],
         "Mid-Atlantic": b[4],
         "New England": b[5]
+    }
+
+    var cannabisColor = {
+        "A": "#016450",
+        "B": "#02818a",
+        "C": "#3690c0",
+        "D": "#67a9cf",
+        "E": "#a6bddb",
+        "F": "#f00"
+    };
+    var cannabisDescription = {
+        "A": "Jurisdiction with legalized cannabis",
+        "B": "Jurisdiction with both medical and decriminalization laws",
+        "C": "Jurisdiction with legal psychoactive medical cannabis",
+        "D": "Jurisdiction with legal non-psychoactive medical cannabis",
+        "E": "Jurisdiction with decriminalized cannabis possession laws",
+        "F": "Jurisdiction with cannabis prohibition"
+    };
+
+    var sameSexData = {
+        "A": "WA OR NV CA NM MN IL HI DC VT NH ME MA RI NY NJ CT DE MD".split(" "),
+        "B": "MT WY AZ IA SC VI".split(" "),
+        "C": "ID CO ND SD WI MI PA IN KS MO KY WV OK AR TN NC LA MS AL GA PR FL".split(" "),
+        "D": "NE".split(" "),
+        "E": "AK UT".split(" "),
+        "F": "".split(" "),
+        "G": "TX OH".split(" "),
+        "H": "VA".split(" ")
+    };
+    var sameSexColors = {
+        "A": "#d3d3d3",
+        "B": "#f2b3be",
+        "C": "#e27f90",
+        "D": "red",
+        "E": "#d40000",
+        "F": "#aa0000",
+        "G": "#800000",
+        "H": "#2b0000"
+    };
+    var sameSexDescriptions = {
+        "A": "No statute banning same-sex unions",
+        "B": "Statute bans same-sex marriage",
+        "C": "Statute bans same-sex marriage and recognition <br>of out of state same-sex marriages",
+        "D": "Statute bans same-sex marriage, civil union, <br>domestic partnership, and other similar <br>same-sex relationships",
+        "E": "Statute bans same-sex marriage, recognition of <br>out of state same-sex marriages, and domestic <br>unions that give the same or substantially <br>equivalent legal effect of marriage",
+        "F": "Statute bans same-sex marriage, recognition of <br>out of state same-sex marriages,contractual <br>rights granted by virtue of the marriage, and any <br>same-sex relationships",
+        "G": "Statute bans same-sex marriage, civil unions, <br>statutory benefits of a legal marriage to <br>nonmarital relationships between persons of the same <br>sex or different sexes, and recognition of out of state <br>same-sex marriages and civil unions or statutory benefits <br>of a legal marriage to nonmarital relationships between persons<br> of the same sex or different sexes",
+        "H": "Statute bans same-sex marriage, civil unions, <br>partnership contracts, and other arrangement <br>entered into by persons of the same sex, and recognition<br> of out of state same-sex marriages, contractual rights, <br>civil unions, partnership contracts, and other <br>arrangement entered into by persons of the same sex"
+    };
+
+    var gunOwnersData = {
+        "A": "NE OH NY NJ DE CT RI NH".split(" "),
+        "B": "WA OR CA MO IL MI ME VT MA MD PA VA NC".split(" "),
+        "C": "NM WI IA SD IN TN GA FL TX OK AZ NV UT CO KS".split(" "),
+        "D": "MN ND LA MS AL SC KY HI".split(" "),
+        "E": "WV AR WY ID MT AK".split(" ")
+    };
+
+    var gunOwnersColors = {
+        "A": "#ffffb2",
+        "B": "#fecc5c",
+        "C": "#fd8d3c",
+        "D": "#f03b20",
+        "E": "#bd0026"
+    };
+
+    var gunOwnersDescriptions = {
+        "A": " 0% &dash; 20%",
+        "B": "20% &dash; 30%",
+        "C": "40% &dash; 50%",
+        "D": "50% &dash; 60%",
+        "E": "60% &dash; 100%"
     }
 
     var map = L.map("map", {
@@ -102,13 +282,15 @@
 
     var polygons = L.geoJSON(states, {
        style: function (feature) {
-           return {};
+           return {
+               weight: 2
+           };
        }
     });
 
     var abbr = L.geoJSON(centroids, {
         onEachFeature: function (feature, layer) {
-            layer.bindTooltip(feature.properties.STUSPS, {permanent: true});
+            layer.bindTooltip(feature.properties.NAME, {permanent: true});
         },
         pointToLayer: function (feature, latlng) {
             return L.circleMarker(latlng, {
@@ -127,11 +309,12 @@
             });
         }
     }).openTooltip();
-
+    nicknames.getAttribution = function () {return '&copy; <a href="http://www.50states.com/nickname.htm">50states.com</a>'};
     var regions = L.geoJSON(states, {
        style: function (feature) {
            return {
-               color: colors[feature.properties.REGION] || "#888"
+               color: colors[feature.properties.REGION] || "#888",
+               weight: 2
            }
        }
     });
@@ -146,6 +329,101 @@
             });
         }
     }).openTooltip();
+
+    var statesOutlines = L.geoJSON(states, {
+        style: function (feature) {
+            return {
+                fillOpacity: 0,
+                weight: 2,
+                color: "#888"
+            }
+        }
+    });
+
+    var cannabis = L.geoJSON(states, {
+        style: function (feature) {
+            return {
+                color: cannabisColor[feature.properties.CANNABIS] || "grey",
+                opacity: 0,
+                fillOpacity: .5
+            };
+        }
+    });
+    cannabis.getAttribution = function () {return '&copy; <a href="https://en.wikipedia.org/wiki/Cannabis_in_the_United_States">Wikipedia</a>';}
+    var cannabisLegend = L.control({position: 'bottomright'});
+
+    cannabisLegend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend cannabisLegend');
+        var levels = Object.keys(cannabisColor);
+        for (var i = 0; i < levels.length; i++) {
+            div.innerHTML += '<p><i style="background:' + cannabisColor[levels[i]] + '"></i> ' + cannabisDescription[levels[i]] + '</p>';
+        }
+        return div;
+    };
+    cannabisLegend.onRemove = function () {
+        $('.cannabisLegend').remove();
+    }
+
+    var sameSex = L.geoJSON(states, {
+        style: function (feature) {
+            var val = null;
+            _.each(_.keys(sameSexData), function (key) {
+                if (_.includes(sameSexData[key], feature.properties.STUSPS)){
+                    val = key;
+                }
+            });
+            return {
+                color: sameSexColors[val] || "grey",
+                opacity: 0,
+                fillOpacity: .5
+            };
+        }
+    });
+    sameSex.getAttribution = function () {return '&copy; <a href="https://en.wikipedia.org/wiki/Same-sex_marriage_law_in_the_United_States_by_state">Wikipedia</a>';}
+    var sameSexLegend = L.control({position: 'bottomright'});
+
+    sameSexLegend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend sameSexLegend');
+        var levels = Object.keys(sameSexColors);
+        for (var i = 0; i < levels.length; i++) {
+            div.innerHTML += '<p><i style="background:' + sameSexColors[levels[i]] + '"></i> ' + sameSexDescriptions[levels[i]] + '</p>';
+        }
+        return div;
+    };
+    sameSexLegend.onRemove = function () {
+        $(".sameSexLegend").remove();
+    };
+
+    var gunOwners = L.geoJSON(states, {
+        style: function (feature) {
+            var val = null;
+            _.each(_.keys(gunOwnersData), function (key) {
+                if (_.includes(gunOwnersData[key], feature.properties.STUSPS)){
+                    val = key;
+                }
+            });
+            return {
+                color: gunOwnersColors[val] || "grey",
+                opacity: 0,
+                fillOpacity: .5
+            };
+        }
+    });
+    gunOwners.getAttribution = function () {return '&copy; <a href="http://www.motherjones.com/politics/2015/06/gun-owners-study-one-in-three">Mother Jones</a>'; }
+    var gunOwnersLegend = L.control({position: 'bottomright'});
+    gunOwnersLegend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend sameSexLegend');
+        var levels = Object.keys(gunOwnersColors);
+        for (var i = 0; i < levels.length; i++) {
+            div.innerHTML += '<p><i style="background:' + gunOwnersColors[levels[i]] + '"></i> ' + gunOwnersDescriptions[levels[i]] + '</p>';
+        }
+        return div;
+    };
+
+    gunOwnersLegend.onRemove = function () {
+        $(".sameSexLegend").remove();
+    };
+    var legends = [cannabisLegend, sameSexLegend, gunOwnersLegend];
 
     var base = {
             layers: [
@@ -177,21 +455,45 @@
             "#11nations": {
                 layers: [
                     osm,
-                    nations
+                    nations,
+                    statesOutlines
                 ]
             },
             "#garreau": {
                 layers: [
                     osm,
-                    garreau
+                    garreau,
+                    statesOutlines
                 ]
             },
             "#dialects": {
                 layers: [
                     osm,
-                    dialects
+                    dialects,
+                    statesOutlines
                 ]
-            }
+            },
+            "#cannabis": {
+                layers: [
+                    osm,
+                    cannabis,
+                    cannabisLegend
+                ]
+            },
+            "#samesex": {
+                layers: [
+                    osm,
+                    sameSex,
+                    sameSexLegend
+                ]
+            },
+            "#guns": {
+                layers: [
+                    osm,
+                    gunOwners,
+                    gunOwnersLegend
+                ]
+            },
         };
 
     function setUp (id) {
@@ -204,6 +506,9 @@
         var composition = compositions[id] || {layers: []},
             others = _.without(_.keys(compositions), id),
             layers = _.xor(composition.layers, base.layers);
+        legends.forEach(function(legend){
+            map.removeControl(legend);
+        });
         others.forEach(function(compositionId){
             var c = compositions[compositionId];
             _.forEach(_.xor(c.layers, base.layers), function(layer) {
@@ -219,20 +524,34 @@
         }
     }
 
-    $('.navbar ul li a').click(function () {
-        var href = this.getAttribute("href");
+    function setActive (id) {
         $('.navbar ul li').each(function () {
             this.classList.remove("active");
-        })
-        this.parentElement.classList.add("active");
-        setUp(href);
+        });
+        var menuItem = $('.navbar ul li a[href="'+id+'"]')[0];
+        menuItem && menuItem.parentElement.classList.add("active");
+    }
+
+    function switchComposition (id) {
+        if (!compositions[id]) {
+            id = "#regions";
+        }
+        setUp(id);
+        setActive(id);
+    }
+
+    $(window).on("hashchange", function () {
+       switchComposition(window.location.hash);
     });
-    setUp("#garreau");
 
     $(window).on("resize", function () {
         $("#map").height($(window).height()).width($(window).width());
         map.invalidateSize();
     }).trigger("resize");
+
+    switchComposition(window.location.hash);
 </script>
+
+
 </body>
 </html>

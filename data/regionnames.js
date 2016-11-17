@@ -39,8 +39,8 @@ var regionnames = {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [-130.71273729710023,
-                    49.38712718870873
+                "coordinates": [-120.73059556453501,
+                    39.8309872671963
                 ]
             },
             "properties": {
