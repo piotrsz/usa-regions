@@ -139,6 +139,7 @@
                 <li><a href="#cannabis">Cannabis</a></li>
                 <li><a href="#samesex">Same Sex Unions</a></li>
                 <li><a href="#guns">Gun Owners</a></li>
+                <li><a href="#redblue">Red vs. Blue</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li id="about"><a class="btn" data-toggle="modal" data-target="#myModal" href="#about">About</a></li>
@@ -558,7 +559,49 @@
         opacity: 0.7
     });
 
-    var legends = [cannabisLegend, sameSexLegend, gunOwnersLegend, theCityLegend, sodaLegend, freewaysLegend, blackLegend, densityLegend];
+    var redBlueData = {
+        "red_4of4": "AZ UT ID MT WY NE SD ND KS OK TX LA AR MO MS AL GA SC TN KY WV AK".split(" "),
+        "red_3of4": "IN NC".split(" "),
+        "red_2of4": "FL IA OH".split(" "),
+        "red_1of4": "NV NM CO WI MI PA VA".split(" "),
+        "red_0of4": "WA OR NV CA MN IL ME NH VT NY CT RI MA NJ MD DE HI".split(" ")
+    }, redBlueColors = {
+        "red_4of4": "#ff0000",
+        "red_3of4": "#ff8080",
+        "red_2of4": "#a000a0",
+        "red_1of4": "#80a0ff",
+        "red_0of4": "#0000ff"
+    }, redBlueDescriptions = {
+        "red_4of4": "States carried by the Republican in all four elections",
+        "red_3of4": "States carried by the Republican in three of the four elections",
+        "red_2of4": "States carried by each party twice in the four elections",
+        "red_1of4": "States carried by the Democrat in three of the four elections",
+        "red_0of4": "States carried by the Democrat in all four elections"
+    }, redBlueLegend = createLegend({
+        title: "Summary of results of the 2004, 2008, 2012, and 2016 presidential elections",
+        colors: redBlueColors,
+        descriptions: redBlueDescriptions,
+        className: "redBlueLegend"
+    }), redBlue =  L.geoJSON(states, {
+        style: function (feature) {
+            var val = null;
+            _.each(_.keys(redBlueData), function (key) {
+                if (_.includes(redBlueData[key], feature.properties.STUSPS)) {
+                    val = key;
+                }
+            });
+            return {
+                color: redBlueColors[val] || "grey",
+                opacity: 0,
+                fillOpacity: .5
+            };
+        }
+    });
+    redBlue.getAttribution = function () {
+        return '&copy; <a href="https://en.wikipedia.org/wiki/Red_states_and_blue_states">Wikipedia</a>';
+    };
+
+    var legends = [cannabisLegend, sameSexLegend, gunOwnersLegend, theCityLegend, sodaLegend, freewaysLegend, blackLegend, densityLegend, redBlueLegend];
 
     var base = {
         layers: [
@@ -675,6 +718,13 @@
                 statesOutlines,
                 densityLegend
             ]
+        },
+        "#redblue": {
+            layers: [
+                osm,
+                redBlue,
+                redBlueLegend
+            ]
         }
     };
 
@@ -689,7 +739,7 @@
         });
 
         legend.onAdd = function (map) {
-            var div = L.DomUtil.create('div', 'info legend ' + className);
+            var div = L.DomUtil.create('div', 'hidden-sm hidden-xs info legend ' + className);
             if (title) {
                 div.innerHTML += '<h4>' + title + '</h4>';
             }
