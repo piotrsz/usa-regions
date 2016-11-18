@@ -111,6 +111,7 @@
                         <li><a href="#nicknames">Nicknames</a></li>
                         <li><a href="#density">Population density</a></li>
                         <li><a href="#blackdensity">Black pop. density</a></li>
+                        <li><a href="#hispdensity">Hispanic pop. density</a></li>
                         <li><a href="#half">Half of the population</a></li>
                     </ul>
                 </li>
@@ -520,6 +521,28 @@
         opacity: 0.7
     });
 
+    var hispColors = {
+        1: "#532c91",
+        2: "#715eb5",
+        3: "#9d92cb",
+        4: "#9e92cc",
+        5: "#f5f2f9"
+    }, hispDescriptions = {
+        1: "More than 50.0",
+        2: "25.0 &dash; 50.0",
+        3: "16.3 &dash; 24.9",
+        4: "5.0 &dash; 16.2",
+        5: "Less than 5.0"
+    }, hispLegend = createLegend({
+        title: "Hispanic or Latino Population as a Percent of Total Population, 2010",
+        colors: hispColors,
+        descriptions: hispDescriptions,
+        className: "hispLegend"
+    }), hisp = L.tileLayer('http://warp.worldmap.harvard.edu/maps/tile/5963/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/2010_US_Census_Hispanic_Population_by_County.svg/1280px-2010_US_Census_Hispanic_Population_by_County.svg.png">Wikipedia</a>',
+        opacity: 0.7
+    });
+
     var half = L.tileLayer('http://warp.worldmap.harvard.edu/maps/tile/5958/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://www.businessinsider.com/half-of-the-united-states-lives-in-these-counties-2013-9?IR=T">Business Insider</a>',
         opacity: 0.7
@@ -601,7 +624,7 @@
         return '&copy; <a href="https://en.wikipedia.org/wiki/Red_states_and_blue_states">Wikipedia</a>';
     };
 
-    var legends = [cannabisLegend, sameSexLegend, gunOwnersLegend, theCityLegend, sodaLegend, freewaysLegend, blackLegend, densityLegend, redBlueLegend];
+    var legends = [cannabisLegend, sameSexLegend, gunOwnersLegend, theCityLegend, sodaLegend, freewaysLegend, blackLegend, hispLegend, densityLegend, redBlueLegend];
 
     var base = {
         layers: [
@@ -702,6 +725,14 @@
                 black,
                 statesOutlines,
                 blackLegend
+            ]
+        },
+        "#hispdensity": {
+            layers: [
+                osm,
+                hisp,
+                statesOutlines,
+                hispLegend
             ]
         },
         "#half": {
